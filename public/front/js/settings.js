@@ -1,5 +1,4 @@
-
-
+/* eslint-disable no-undef */
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
@@ -93,7 +92,7 @@ export const classNames = {
     loading: 'loading',
     tableBooked: 'booked',
     selectedTable: 'selected',
-    table: 'table'
+    table: 'table',
   },
   nav: {
     active: 'active',
@@ -123,7 +122,7 @@ export const settings = {
     tableIdAttribute: 'data-table',
   },
   db: {
-    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131/api' : ''),
+    url: '//' + window.location.hostname + (window.location.hostname==='localhost' ? ':3131/api' : ''),
     // url: '//localhost:3131/api',
     product: 'product',
     order: 'order',

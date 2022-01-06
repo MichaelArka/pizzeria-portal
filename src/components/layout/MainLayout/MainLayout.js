@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageNav from '../PageNav/PageNav';
 
-const MainLayout = props => (
-  <div>{props.children}<PageNav /></div>
+const MainLayout = ({ children }) => (
+  <div>
+    <PageNav />
+    {children}
+  </div>
 );
 
 MainLayout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default MainLayout;

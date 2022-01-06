@@ -3,8 +3,8 @@ import AmountWidget from './AmountWidget.js';
 import utils from '/js/utils.js';
 
 class Product {
-  constructor(id, data){ 
-    
+  constructor(id, data){
+
     const thisProduct = this;
 
     thisProduct.id = id;
@@ -66,17 +66,17 @@ class Product {
       /* [DONE] find active product (product that has active class */
       const activeProduct = document.querySelectorAll(select.all.menuProductsActive);
       //console.log(activeProduct);
-        
+
       /* [DONE] if there is active product and it's not thisProduct.element, remove class active from it */
       for(let active of activeProduct){
         if(active !== thisProduct.element){
           active.classList.remove(classNames.menuProduct.wrapperActive);
         }
       }
-    
+
       /* [DONE] toggle active class on thisProduct.element */
       thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
-    
+
     });
   }
 
@@ -88,13 +88,13 @@ class Product {
       event.preventDefault();
       thisProduct.processOrder();
     });
-    
+
     for(let input of thisProduct.formInputs){
       input.addEventListener('change', function(){
         thisProduct.processOrder();
       });
     }
-    
+
     thisProduct.cartButton.addEventListener('click', function(event){
       event.preventDefault();
       thisProduct.processOrder();
@@ -142,7 +142,7 @@ class Product {
         } else {
 
           // [DONE] check if the option is default
-          if(option.default == true){
+          if(option.default === true){
 
             // [DONE] reduce price variable
             thisProduct.priceSingle -= option.price;
@@ -186,7 +186,7 @@ class Product {
       bubbles: true,
       detail: {
         product: thisProduct.prepareCartProduct(),
-      }
+      },
     });
 
     thisProduct.element.dispatchEvent(event);
@@ -220,7 +220,7 @@ class Product {
 
       params[paramId] = {
         label: param.label,
-        options: {}
+        options: {},
       };
 
       for(let optionId in param.options){

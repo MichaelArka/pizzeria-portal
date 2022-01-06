@@ -1,13 +1,13 @@
 {
   "env": {
-     "es6": true,
-     "browser": true,
-     "node": true,
-     "jest": true
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
+    "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -30,7 +30,9 @@
     "indent": [
       "error",
       2,
-      {"SwitchCase": 1}
+      {
+        "SwitchCase": 1
+      }
     ],
     "linebreak-style": [
       "off"
@@ -38,7 +40,9 @@
     "quotes": [
       "error",
       "single",
-      {"allowTemplateLiterals": true}
+      {
+        "allowTemplateLiterals": true
+      }
     ],
     "semi": [
       "error",
@@ -48,6 +52,10 @@
       "error",
       "always-multiline"
     ],
-    "no-console": "off"
+    "no-console": "off",
+    "no-prototype-builtins": "off"
+  },
+  "globals": {
+    "Handlebars": false
   }
 }

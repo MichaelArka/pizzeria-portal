@@ -20,7 +20,7 @@ class BaseWidget{
     const newValue = thisWidget.parseValue(value);
 
     /* TODO: add validation */
-    if (newValue != thisWidget.correctValue 
+    if (newValue !== thisWidget.correctValue
       && thisWidget.isValid(newValue)){
       thisWidget.correctValue = newValue;
       thisWidget.announce();
@@ -52,7 +52,7 @@ class BaseWidget{
     const thisWidget = this;
 
     const event = new CustomEvent('updated', {
-      bubbles: true
+      bubbles: true,
     });
     thisWidget.dom.wrapper.dispatchEvent(event);
   }

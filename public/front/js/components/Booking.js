@@ -7,8 +7,8 @@ import utils from '/js/utils.js';
 class Booking {
   constructor(element){
     const thisBooking = this;
-    
-    thisBooking.render(element),
+
+    thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
 
@@ -23,30 +23,30 @@ class Booking {
 
     const params = {
       booking: [
-        startDateParam, 
+        startDateParam,
         endDateParam,
       ],
 
       eventsCurrent: [
-        settings.db.notRepeatParam, 
-        startDateParam, 
+        settings.db.notRepeatParam,
+        startDateParam,
         endDateParam,
       ],
 
       eventsRepeat: [
-        settings.db.repeatParam, 
+        settings.db.repeatParam,
         endDateParam,
       ],
     };
     //console.log('getData params', params);
 
     const urls = {
-      booking:       settings.db.url + '/' + settings.db.booking  
+      booking:       settings.db.url + '/' + settings.db.booking
                                      + '?' + params.booking.join('&'),
-      eventsCurrent: settings.db.url + '/' + settings.db.event   
+      eventsCurrent: settings.db.url + '/' + settings.db.event
                                      + '?' + params.eventsCurrent.join('&'),
-      eventsRepeat:  settings.db.url + '/' + settings.db.event   
-                                     + '?' + params.eventsRepeat.join('&')
+      eventsRepeat:  settings.db.url + '/' + settings.db.event
+                                     + '?' + params.eventsRepeat.join('&'),
     };
 
     Promise.all([
@@ -90,7 +90,7 @@ class Booking {
     const maxDate = thisBooking.datePicker.maxDate;
 
     for(let item of eventsRepeat){
-      if(item.repeat == 'daily'){
+      if(item.repeat === 'daily'){
         for(let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)){
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
         }
@@ -111,7 +111,7 @@ class Booking {
 
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
       //console.log('loop', hourBlock);
-    
+
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];
       }
@@ -126,7 +126,7 @@ class Booking {
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     let allAvailable = false;
-  
+
     if(
       typeof thisBooking.booked[thisBooking.date]  == 'undefined'
       ||
@@ -151,7 +151,7 @@ class Booking {
       }
     }
   }
-  
+
   render(element){
     const thisBooking = this;
 
@@ -181,27 +181,27 @@ class Booking {
 
   initWidgets(){
     const thisBooking = this;
-    
+
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.dom.peopleAmount.addEventListener('updated', function(){
     });
-    
+
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.dom.hoursAmount.addEventListener('updated', function(){
     });
-    
+
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.dom.datePicker.addEventListener('updated', function(){
     });
-    
+
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
     thisBooking.dom.hourPicker.addEventListener('updated', function(){
     });
-    
+
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-    
+
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       thisBooking.initTables(event);
     });
@@ -213,15 +213,15 @@ class Booking {
   }
 
   initTables(event){
-    event.preventDefault;
+    event.preventDefault();
     const thisBooking = this;
-    
+
     //thisBooking.dom.floorPlan.addEventListener('dblclick', function(event){
     const element = event.target;
     const table = element.classList.contains(classNames.booking.table);
     const booked = element.classList.contains(classNames.booking.tableBooked);
     const selected = element.classList.contains(classNames.booking.selectedTable);
-  
+
     if(table && !booked){
       thisBooking.removeTable();
       if(!selected){
@@ -257,7 +257,7 @@ class Booking {
     payload.phone = thisBooking.dom.phone.value;
     payload.address = thisBooking.dom.address.value;
     payload.starters = [];
-    
+
     for(let starter of thisBooking.dom.starters) {
       if(starter.checked){
         payload.starters.push(starter.value);

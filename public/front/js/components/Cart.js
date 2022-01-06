@@ -82,9 +82,9 @@ class Cart{
       thisCart.subtotalPrice += product.price;
     }
 
-    thisCart.totalNumber == 0 ? thisCart.deliveryFee = 0 : thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+    thisCart.totalNumber === 0 ? thisCart.deliveryFee = 0 : thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
-    
+
     thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
     thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
     thisCart.dom.deliveryFee.innerHTML = deliveryFee;
@@ -134,7 +134,7 @@ class Cart{
     };
     fetch(url, options)
       .then(function(response){
-        return response.json(); 
+        return response.json();
       })
       .then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);

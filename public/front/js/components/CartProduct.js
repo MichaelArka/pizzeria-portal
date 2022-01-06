@@ -55,11 +55,11 @@ class CartProduct{
     const thisCartProduct = this;
 
     thisCartProduct.dom.edit.addEventListener('click', function(event){
-      event.preventDefault;
+      event.preventDefault();
     });
 
     thisCartProduct.dom.remove.addEventListener('click', function(event){
-      event.preventDefault;
+      event.preventDefault();
       thisCartProduct.remove();
     });
   }
